@@ -34,14 +34,18 @@ const limiter = rateLimit({
 // Aplicar el limitador globalmente
 app.use(limiter);
 
+
 // Middleware para manejar errores - debe estar al inicio de las rutas
 app.use(loggerMiddleware);
+
 
 //  relacionas las rutas de user.route y las especifica al string: "/api/v1/users"
 app.use("/api/v1/users", userRoute);
 
 //  relacionas las rutas de auth.route y las especifica al string: "/api/v1/auth"
 app.use("/api/v1/auth", authRoute);
+
+
 
 // Middleware para manejar errores - debe estar al final de las rutas
 app.use(httpErrorHandle);
