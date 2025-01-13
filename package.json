@@ -1,24 +1,3 @@
-# Hito_Node.js_API_Sequelize
-Proyecto educativo
-
-Thunder Client: 
-
-Operaciones GET: 
-
-http://localhost:3000/api/v1/users/1
-
-Operaciones POST:
-
-http://localhost:3000/api/v1/users/1
-
-GET /api/v1/uses 200 # Listar todos los usuarios 
-GET /api/v1/users/:id 200 # Obtener un usuario por ID 
-POST /api/v1/users 201 # Crear un usuario 
-PUT /api/v1/users/:id 200 # Actualizar un usuario por ID 
-DELETE /api/v1/users/:id 204 # Eliminar un usuario por ID
-
-
-```json
 {
   "name": "hito_node.js_api_sequelize",
   "version": "1.0.0",
@@ -63,4 +42,3 @@ DELETE /api/v1/users/:id 204 # Eliminar un usuario por ID
     "winston": "^3.17.0"
   }
 }
-```

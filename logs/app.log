@@ -1,0 +1,8 @@
+2025-01-13T07:41:46.561Z [ERROR]: /api/v1/users/1 GET invalid input syntax for type uuid: "1"
+2025-01-13T08:04:33.283Z [ERROR]: user@example.com
+2025-01-13T08:04:33.289Z [ERROR]: /api/v1/auth/login POST User not found
+2025-01-13T08:05:00.831Z [ERROR]: test2_update2r@example.com
+2025-01-13T08:05:00.834Z [ERROR]: /api/v1/auth/login POST User not found
+2025-01-13T08:05:14.430Z [ERROR]: test2_update2r@domain.com
+2025-01-13T08:05:14.432Z [ERROR]: /api/v1/auth/login POST User not found
+2025-01-13T08:05:21.381Z [ERROR]: /api/v1/auth/login POST Password incorrect
