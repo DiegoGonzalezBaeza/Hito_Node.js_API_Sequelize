@@ -64,3 +64,12 @@ DELETE /api/v1/users/:id 204 # Eliminar un usuario por ID
   }
 }
 ```
+
+sirve para los entornos virtuales
+```bash
+npm i dotenv
+```
+
+```ts
+import "dotenv/config";
+```
