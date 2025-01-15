@@ -3,8 +3,8 @@ import jwt from "jsonwebtoken";
 const secret = process.env.JWT_SECRET || "secret";
 
 export const generateAccessToken = (
-    email: string,
     uid: string,
+    email: string,
     expiresIn: "1h"
 ) => {
     return jwt.sign({ email, uid }, secret, { 

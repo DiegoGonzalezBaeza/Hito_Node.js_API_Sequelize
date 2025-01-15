@@ -1,4 +1,4 @@
-import { UserModel } from "../models/user.model";
+import "dotenv/config";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { userService } from "./user.service";
@@ -8,8 +8,8 @@ import logger from "../utils/logger.util";
 
 
 const loginWithEmailAndPassword = async(email: string, password: string) => {
-    const user = await UserModel.findOneByEmail(email);
-
+    const user = await userService.getUserByEmail(email);
+    console.log(password);
     if(!user) {
         // para saber si el error es por el email
         logger.error(email);
@@ -17,14 +17,25 @@ const loginWithEmailAndPassword = async(email: string, password: string) => {
         throw new HttpError("User not found", 400);
     }
 
+    if (!password) {
+        throw new HttpError("Password ingresado is undefined "+{password}, 401);
+      }
+
+    // if (!user.password) {
+    //     throw new HttpError("Password en BD is undefined "+{password}, 401);
+    //   }
+
     // 2. comparar los hash de contraseña
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) {
         throw new HttpError("Password incorrect", 400); 
     }
-
+    const wordSecret = process.env.JWT_SECRET;
+    if (!wordSecret) {
+        throw new Error("La variable de entorno wordSecret no está definida.");
+      }
     // 3. Generar el Token
-    const token = jwt.sign({email: user.email}, "secret", {
+    const token = jwt.sign({email: user.email}, wordSecret, {
         expiresIn: "1h"
     });
 

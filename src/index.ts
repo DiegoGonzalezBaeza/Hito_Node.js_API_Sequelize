@@ -2,7 +2,7 @@ import "dotenv/config";
 import express from "express";
 import userRoute from "./routes/user.route";
 import authRoute from "./routes/auth.route";
-import {pool} from "./config/database"
+// import {pool} from "./config/database"
 import { httpErrorHandle } from "./middlewares/httpErrorHandle.middleware";
 import { loggerMiddleware } from "./middlewares/logger.middleware";
 import rateLimit from "express-rate-limit";
@@ -10,8 +10,17 @@ import rateLimit from "express-rate-limit";
 import openapiSpecification from "./config/swagger";
 import swaggerUi from "swagger-ui-express";
 
+import { User } from "./models/user.model";
+import { sequelize } from "./config/database";
+
 const app = express();
 const port = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware para manejar errores - debe estar al inicio de las rutas
+app.use(loggerMiddleware);
 
 app.use(
     "/api/v1/api-docs",
@@ -19,8 +28,6 @@ app.use(
     swaggerUi.setup(openapiSpecification)
   );
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // Configurar el limitador
 const limiter = rateLimit({
@@ -36,9 +43,6 @@ const limiter = rateLimit({
 app.use(limiter);
 
 
-// Middleware para manejar errores - debe estar al inicio de las rutas
-app.use(loggerMiddleware);
-
 
 //  relacionas las rutas de user.route y las especifica al string: "/api/v1/users"
 app.use("/api/v1/users", userRoute);
@@ -51,18 +55,33 @@ app.use("/api/v1/auth", authRoute);
 // Middleware para manejar errores - debe estar al final de las rutas
 app.use(httpErrorHandle);
 
-// Para levantar el servidor
-const main = async() => {
+const main = async () => {
     try {
-        const { rows } = await pool.query("SELECT NOW()");
-        console.log(rows[0].now, "db conectada !");
-        // Para levantar el servidor
-        app.listen(port, () => {
-            console.log("Servidor andando en el puerto: "+ port);
-        });
+      await sequelize.sync({ force: true });
+      console.log("Database connected");
+      app.listen(port, () => {
+        console.log(`Server is running on http://localhost:${port}`);
+      });
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-}; 
+  };
+  
+  main();
 
-main();
+
+// // Para levantar el servidor
+// const main = async() => {
+//     try {
+//         const { rows } = await pool.query("SELECT NOW()");
+//         console.log(rows[0].now, "db conectada !");
+//         // Para levantar el servidor
+//         app.listen(port, () => {
+//             console.log("Servidor andando en el puerto: "+ port);
+//         });
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }; 
+
+// main();

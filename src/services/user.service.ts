@@ -1,28 +1,28 @@
-import { UserModel } from "../models/user.model";
+import { User } from "../models/user.model";
 // import {nanoid} from "nanoid";
 // import { User } from "../interfaces/user.interface";
 import bcrypt from "bcryptjs";
 import { HttpError } from "../utils/httpError.util";
 
 const getAllUsers = async () => {
-    const users = await UserModel.findAll();
+    const users = await User.findAll();
     return users;
 };
 
 const getUseById = async (id: string) => { 
-    const user = await UserModel.findById(id); 
+    const user = await User.findByPk(id); 
     if (!user) throw new HttpError("User not found", 400); 
     return user; 
   }; 
 
 const getUserByEmail = async (email: string) => { 
-    const user = await UserModel.findOneByEmail(email); 
+    const user = await User.findOne({ where :{ email }}); 
     if (!user) throw new HttpError("User not found", 400); 
     return user; 
   };
 
 const createUserWithEmailAndPassword = async(email: string, password: string) => {
-    const user = await UserModel.findOneByEmail(email);
+    const user = await User.findOne({ where :{ email }});
     if (user){
         throw new HttpError("Email already exists", 400);
     }
@@ -30,29 +30,29 @@ const createUserWithEmailAndPassword = async(email: string, password: string) =>
     const salt = await bcrypt.genSalt(10);
     const passwordHashed = await bcrypt.hash(password, salt);
 
-    const newUser = await UserModel.create(email, passwordHashed);
+    const newUser = await User.create({ email, password: passwordHashed });
     return newUser;
-
 };
 
 const deleteUserById = async (id: string) => { 
-    const user = await UserModel.remove(id); 
+    const user = await User.findByPk(id); 
     if (!user) throw new HttpError("User not found", 400); 
-    return user; 
+    await user.destroy(); // Usa destroy para eliminar el usuario
+    return { message: "User deleted successfully" }; 
   };
 
-  const updateUserById = async (id: string, email: string, password: string) => { 
-    // Cifra la contraseña solo si se proporciona un nuevo valor para ella
-    let passwordHashed: string | undefined;
-
-    if (password) {
-        const salt = await bcrypt.genSalt(10);
-        passwordHashed = await bcrypt.hash(password, salt);
-    }
-
-    // Llama al modelo con el valor cifrado de la contraseña (o sin cambiar la contraseña)
-    const user = await UserModel.update(id, email, passwordHashed);
+  const updateUserById = async (id: string, email?: string, password?: string) => {
+    const user = await User.findByPk(id);
     if (!user) throw new HttpError("User not found", 400);
+  
+    // Actualiza solo los campos proporcionados
+    if (email) user.email = email;
+    if (password) {
+      const salt = await bcrypt.genSalt(10);
+      user.password = await bcrypt.hash(password, salt);
+    }
+  
+    await user.save(); // Guarda los cambios
     return user;
   };
 

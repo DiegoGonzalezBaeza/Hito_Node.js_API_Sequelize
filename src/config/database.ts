@@ -1,14 +1,20 @@
 import "dotenv/config";
-import pg from "pg";
-
-const {Pool} = pg;
-
-// const connectionString = 'postgresql://dbuser:secretpassword@database.server.com:3211/mydb'
-// cambiar con los datos de docker-compose.yml:
+import { Sequelize } from "sequelize-typescript";
+import { User } from "../models/user.model";
 
 const connectionString = process.env.CONNECT_DB;
 
-export const pool = new Pool({
-    connectionString,
-    allowExitOnIdle: true,
+if (!connectionString) {
+    throw new Error("La variable de entorno CONNECT_DB no está definida.");
+  }
+
+export const sequelize = new Sequelize(connectionString, {
+  dialect: "postgres",
+  models: [User],
+  logging: false, // disable logging
 });
+
+// sequelize.sync({ force: true }).then(() => {
+//   console.log("Database & tables created!");
+// });
+
