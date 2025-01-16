@@ -46,3 +46,13 @@
 2025-01-15T07:44:40.012Z [ERROR]: /api/v1/auth/register POST Illegal arguments: undefined, number
 2025-01-15T07:44:51.916Z [ERROR]: /api/v1/auth/register POST Illegal arguments: undefined, number
 2025-01-15T07:50:22.081Z [ERROR]: /api/v1/auth/login POST Illegal arguments: string, undefined
+2025-01-16T04:48:51.312Z [ERROR]: /api/v1/movies/ POST notNull Violation: Movie.id cannot be null
+2025-01-16T04:49:46.296Z [ERROR]: /api/v1/movies/ POST notNull Violation: Movie.id cannot be null
+2025-01-16T04:50:23.350Z [ERROR]: /api/v1/movies/ POST notNull Violation: Movie.id cannot be null
+2025-01-16T04:52:17.225Z [ERROR]: /api/v1/movies/ POST notNull Violation: Movie.id cannot be null
+2025-01-16T05:29:08.350Z [ERROR]: /api/v1/reviews/00b96ddd-428c-4e37-9c69-e6e79375b193 GET Review not found
+2025-01-16T05:30:07.969Z [ERROR]: /api/v1/reviews/00b96ddd-428c-4e37-9c69-e6e79375b193 GET Review not found
+2025-01-16T05:30:39.857Z [ERROR]: /api/v1/reviews/a166ed82-ee18-4004-8548-9071f1047264 GET Review not found
+2025-01-16T05:35:36.703Z [ERROR]: /api/v1/reviews/a166ed82-ee18-4004-8548-9071f1047264 GET Review not found
+2025-01-16T05:36:19.068Z [ERROR]: /api/v1/reviews/00b96ddd-428c-4e37-9c69-e6e79375b193 GET Review not found
+2025-01-16T05:40:57.162Z [ERROR]: /api/v1/reviews/ POST insert or update on table "reviews" violates foreign key constraint "reviews_uid_fkey"

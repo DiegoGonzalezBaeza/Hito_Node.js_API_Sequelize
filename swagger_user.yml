@@ -12,7 +12,7 @@ paths:
     get:
       summary: Get all users
       tags:
-        - users
+        - Users
       description: Retrieves a list of all users. Requires a valid JWT token.
       security:
         - bearerAuth: []
@@ -38,7 +38,7 @@ paths:
     post:
       summary: Create a new user
       tags:
-        - users
+        - Users
       description: Creates a user with email and password
       requestBody:
         required: true
@@ -70,7 +70,7 @@ paths:
     get:
       summary: Get a user by ID
       tags:
-        - users
+        - Users
       description: Retrieves a single user by their ID
       parameters:
         - name: id
@@ -93,7 +93,7 @@ paths:
     delete:
       summary: Delete a user by ID
       tags:
-        - users
+        - Users
       description: Deletes a single user by their ID
       parameters:
         - name: id
@@ -110,7 +110,7 @@ paths:
     put:
       summary: Update a user by ID
       tags:
-        - users
+        - Users
       description: Updates a user's email and password
       parameters:
         - name: id

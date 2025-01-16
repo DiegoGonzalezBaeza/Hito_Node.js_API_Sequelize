@@ -1,6 +1,8 @@
 import "dotenv/config";
 import { Sequelize } from "sequelize-typescript";
 import { User } from "../models/user.model";
+import { Movie } from "../models/movie.model";
+import { Review } from "../models/review.model";
 
 const connectionString = process.env.CONNECT_DB;
 
@@ -10,7 +12,7 @@ if (!connectionString) {
 
 export const sequelize = new Sequelize(connectionString, {
   dialect: "postgres",
-  models: [User],
+  models: [User, Movie, Review],
   logging: false, // disable logging
 });
 

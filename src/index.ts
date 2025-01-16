@@ -2,6 +2,8 @@ import "dotenv/config";
 import express from "express";
 import userRoute from "./routes/user.route";
 import authRoute from "./routes/auth.route";
+import movieRoute from "./routes/movie.route";
+import reviewRoute from "./routes/review.route";
 // import {pool} from "./config/database"
 import { httpErrorHandle } from "./middlewares/httpErrorHandle.middleware";
 import { loggerMiddleware } from "./middlewares/logger.middleware";
@@ -9,8 +11,6 @@ import rateLimit from "express-rate-limit";
 
 import openapiSpecification from "./config/swagger";
 import swaggerUi from "swagger-ui-express";
-
-import { User } from "./models/user.model";
 import { sequelize } from "./config/database";
 
 const app = express();
@@ -50,6 +50,11 @@ app.use("/api/v1/users", userRoute);
 //  relacionas las rutas de auth.route y las especifica al string: "/api/v1/auth"
 app.use("/api/v1/auth", authRoute);
 
+//  relacionas las rutas de movie.route y las especifica al string: "/api/v1/movies"
+app.use("/api/v1/movies", movieRoute);
+
+//  relacionas las rutas de review.route y las especifica al string: "/api/v1/reviews"
+app.use("/api/v1/reviews", reviewRoute);
 
 
 // Middleware para manejar errores - debe estar al final de las rutas

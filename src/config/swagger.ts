@@ -14,7 +14,7 @@ const options: swaggerJsdoc.Options = {
         },
       ],
   },
-  apis: ['swagger_auth.yml', 'swagger_user.yml'],
+  apis: ['swagger_auth.yml', 'swagger_user.yml', 'swagger_movie.yml', 'swagger_review.yml'],
 };
 
 const openapiSpecification = swaggerJsdoc(options);
