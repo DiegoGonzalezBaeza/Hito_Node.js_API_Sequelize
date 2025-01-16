@@ -146,15 +146,13 @@ destroy() // DELETE
 ```
 ```json
 {
-  "mid": "06277e68-dc6a-438c-8071-b7b23b2e68b7",
-  "title": "movie1",
-  "release_year": 1990,
-  "director": "Nolan",
-  "duration_minutes": 150,
-  "synopsis": "todo o nada",
-  "poster_url": "ww_ww_WW",
-  "updatedAt": "2025-01-16T05:07:50.626Z",
-  "createdAt": "2025-01-16T05:07:50.626Z"
+  "rid": "97401c4b-681f-444e-b7e7-f4e98ac6d904",
+  "rating": 4,
+  "review_text": "Buena pelicula, pero algo lenta",
+  "created_at": "2025-01-16T05:42:22.725Z",
+  "updated_at": "2025-01-16T05:42:22.725Z",
+  "uid": "b52c18e9-41aa-4989-85cb-a2f4f862c2c0",
+  "mid": "f0bb2d60-ec84-4101-81d9-7ae88b901b2e"
 }
 ```
 
