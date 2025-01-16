@@ -100,3 +100,61 @@ create()  // CREATE
 save()    // UPDATE
 destroy() // DELETE
 ```
+# 4.- Ingreso de datos: 
+
+## - Users
+```json
+{
+  "email": "user@example.com",
+  "password": "string"
+}
+```
+
+## - Movies
+```json
+{
+  "title": "movie1",
+  "release_year": 1990,
+  "director": "Nolan",
+  "duration_minutes": 150,
+  "synopsis": "todo o nada",
+  "poster_url": "ww_ww_WW"
+}
+```
+```json
+{
+  "mid": "06277e68-dc6a-438c-8071-b7b23b2e68b7",
+  "title": "movie1",
+  "release_year": 1990,
+  "director": "Nolan",
+  "duration_minutes": 150,
+  "synopsis": "todo o nada",
+  "poster_url": "ww_ww_WW",
+  "updatedAt": "2025-01-16T05:07:50.626Z",
+  "createdAt": "2025-01-16T05:07:50.626Z"
+}
+```
+
+## - Reviews
+```json
+{
+  "uid": "b52c18e9-41aa-4989-85cb-a2f4f862c2c0",
+  "mid": "f0bb2d60-ec84-4101-81d9-7ae88b901b2e",
+  "rating": 4,
+  "review_text": "Buena pelicula, pero algo lenta"
+}
+```
+```json
+{
+  "mid": "06277e68-dc6a-438c-8071-b7b23b2e68b7",
+  "title": "movie1",
+  "release_year": 1990,
+  "director": "Nolan",
+  "duration_minutes": 150,
+  "synopsis": "todo o nada",
+  "poster_url": "ww_ww_WW",
+  "updatedAt": "2025-01-16T05:07:50.626Z",
+  "createdAt": "2025-01-16T05:07:50.626Z"
+}
+```
+
