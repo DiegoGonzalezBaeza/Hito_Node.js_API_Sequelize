@@ -56,3 +56,7 @@
 2025-01-16T05:35:36.703Z [ERROR]: /api/v1/reviews/a166ed82-ee18-4004-8548-9071f1047264 GET Review not found
 2025-01-16T05:36:19.068Z [ERROR]: /api/v1/reviews/00b96ddd-428c-4e37-9c69-e6e79375b193 GET Review not found
 2025-01-16T05:40:57.162Z [ERROR]: /api/v1/reviews/ POST insert or update on table "reviews" violates foreign key constraint "reviews_uid_fkey"
+2025-01-16T22:52:21.571Z [ERROR]: /api/v1/movies/594be903-f61f-4714-8bc0-aca70aeff313 GET Movie not found
+2025-01-16T22:52:40.849Z [ERROR]: /api/v1/movies/594be903-f61f-4714-8bc0-aca70aeff313 GET Movie not found
+2025-01-16T22:53:07.970Z [ERROR]: /api/v1/movies/2168e696-a355-4b0e-9212-df81b68660e9 GET Movie not found
+2025-01-16T23:14:48.604Z [ERROR]: /api/v1/reviews/movie/7b973ad1-fcff-48f9-9126-64036437a6e8 GET WHERE parameter "mid" has invalid "undefined" value

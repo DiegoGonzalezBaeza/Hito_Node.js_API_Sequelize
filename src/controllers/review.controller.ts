@@ -51,8 +51,8 @@ const createReview = async (req: Request, res: Response, next: NextFunction) => 
 
 const deleteReview = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { rid } = req.params;
-        const review = await reviewService.deleteReviewById(rid);
+        const { id } = req.params;
+        const review = await reviewService.deleteReviewById(id);
         res.json(review);
     } catch (error) {
         next(error);
@@ -61,9 +61,9 @@ const deleteReview = async (req: Request, res: Response, next: NextFunction) => 
 
 const updateReview = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { rid } = req.params;
+        const { id } = req.params;
         const { rating, review_text } = req.body;
-        const review = await reviewService.updateReviewById(rid, rating, review_text);
+        const review = await reviewService.updateReviewById(id, rating, review_text);
         res.json(review);
     } catch (error) {
         next(error);

@@ -12,8 +12,8 @@ const getMovies = async (req: Request, res: Response, next: NextFunction) => {
 
 const getMovie = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { mid } = req.params;
-        const movie = await movieService.getMovieById(mid);
+        const { id } = req.params;
+        const movie = await movieService.getMovieById(id);
         if (!movie) {
             res.status(404).json({ message: "Movie not found" });
         } else {
@@ -36,8 +36,8 @@ const createMovie = async (req: Request, res: Response, next: NextFunction) => {
 
 const deleteMovie = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { mid } = req.params;
-        const movie = await movieService.deleteMovieById(mid);
+        const { id } = req.params;
+        const movie = await movieService.deleteMovieById(id);
         res.json(movie);
     } catch (error) {
         next(error);
@@ -46,9 +46,9 @@ const deleteMovie = async (req: Request, res: Response, next: NextFunction) => {
 
 const updateMovie = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { mid } = req.params;
+        const { id } = req.params;
         const { title, release_year, director, duration_minutes, synopsis, poster_url } = req.body;
-        const movie = await movieService.updateMovieById(mid, title, release_year, director, duration_minutes, synopsis, poster_url);
+        const movie = await movieService.updateMovieById(id, title, release_year, director, duration_minutes, synopsis, poster_url);
         res.json(movie);
     } catch (error) {
         next(error);

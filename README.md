@@ -155,4 +155,23 @@ destroy() // DELETE
   "mid": "f0bb2d60-ec84-4101-81d9-7ae88b901b2e"
 }
 ```
+## - Register
+![image](./img/Register_auth_sequelize.webp)
 
+## - Login
+![image](./img/Login_auth_sequelize.webp)
+
+## - Get all Users
+![image](./img/Get_all_users_sequelize.webp)
+
+## - Update User
+![image](./img/Put_update_by_id_sequilize.webp)
+
+## - Delete User
+![image](./img/Delete_user_by_id_sequilize.webp)
+
+## - Swagger
+![image](./img/swagger_sequilize.webp)
+
+## - All CRUD - User - Movie - Review (swagger)
+![image](./img/Screenshot_16-1-2025_205627_localhost%20(1).jpeg)

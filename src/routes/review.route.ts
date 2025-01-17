@@ -8,7 +8,7 @@ router.get("/", reviewController.getReviews);
 
 router.get("/:id", reviewController.getReview);
 
-router.get("/movie/:movie_id", reviewController.getReviewsByMovieId);
+router.get("/movie/:id", reviewController.getReviewsByMovieId);
 
 router.post("/", verifyToken, reviewController.createReview);
 
